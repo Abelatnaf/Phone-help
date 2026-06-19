@@ -4,45 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Father's Day, Dad</title>
-<meta name="description" content="A Father's Day tribute — out of this world.">
+<meta name="description" content="A handwritten Father's Day keepsake.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Caveat:wght@500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="sky"></canvas>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-portrait reveal">
-      <img src="photos/hero-tux.jpg" alt="Dad" loading="eager">
-      <div class="portrait-glow"></div>
+  <!-- COVER -->
+  <header class="cover" id="cover">
+    <span class="ambient-heart h1">♥</span>
+    <span class="ambient-heart h2">♥</span>
+    <span class="ambient-heart h3">♥</span>
+    <span class="ambient-heart h4">♥</span>
+
+    <div class="cover-portrait reveal">
+      <img src="photos/hero-tux.jpg" alt="Dad">
+      <span class="paper-tape tape-portrait"></span>
     </div>
-    <div class="hero-text">
-      <p class="eyebrow reveal">From Mission Control, with love</p>
-      <h1 class="title reveal">Happy Father's Day</h1>
-      <p class="subtitle reveal">To the man who is, quite simply, out of this world.</p>
-    </div>
-    <a class="scroll-cue" href="#letter" aria-label="Scroll down">↓</a>
+
+    <p class="cover-eyebrow reveal">a little something for</p>
+    <h1 class="cover-title reveal">Dad</h1>
+
+    <button class="envelope reveal" id="envelope" aria-label="Open your card">
+      <span class="env-shadow"></span>
+      <span class="env-back"></span>
+      <span class="env-card">
+        <span class="env-card-text">Happy Father's Day ♥</span>
+      </span>
+      <span class="env-front"></span>
+      <span class="env-seal">♥</span>
+    </button>
+
+    <p class="cover-hint" id="coverHint">
+      <span>Tap to open</span>
+      <span class="hint-arrow">↓</span>
+    </p>
   </header>
 
   <main>
     <!-- LETTER -->
     <section id="letter" class="panel">
-      <h2 class="section-title">A Transmission For You</h2>
-      <p id="letterText" class="typewriter"></p>
+      <div class="paper-panel">
+        <span class="paper-tape tape-letter"></span>
+        <p class="dear">Dear Dad,</p>
+        <p id="letterText" class="typewriter"></p>
+      </div>
     </section>
 
-    <!-- CONSTELLATION -->
-    <section id="constellation" class="panel">
-      <h2 class="section-title">The Memory Constellation</h2>
-      <p class="hint">Tap a star to light up a memory.</p>
-      <div id="stars" class="star-field"></div>
-      <div id="memoryCard" class="memory-card hidden">
-        <p id="memoryText"></p>
-        <button id="closeMemory" aria-label="Close">×</button>
-      </div>
+    <!-- MEMORIES -->
+    <section id="memories" class="panel">
+      <h2 class="section-title">Our Favourite Moments</h2>
+      <p class="hint">A few of the thousand reasons we love you.</p>
+      <div id="scrapGrid" class="scrap-grid"></div>
     </section>
 
     <!-- GALLERY -->
@@ -52,16 +67,23 @@
       <div id="galleryGrid" class="gallery-grid"></div>
     </section>
 
+    <!-- NOTES (only renders if CONFIG.notes has entries) -->
+    <section id="notes" class="panel hidden">
+      <h2 class="section-title">From Everyone Who Loves You</h2>
+      <p class="hint">Tap a note to read it.</p>
+      <div id="notesList" class="notes-list"></div>
+    </section>
+
     <!-- FINALE -->
     <section id="finale" class="panel finale">
       <div class="finale-photo reveal">
-        <img src="photos/dad-sons-1.jpg" alt="Dad and sons" loading="lazy">
+        <img src="photos/dad-sons-1.jpg" alt="Dad and sons">
+        <span class="paper-tape tape-finale"></span>
       </div>
-      <h2 class="section-title">Like Father, Like Sons</h2>
-      <p class="finale-text">Thank you for showing us the world, and how to move through it
-      with style, patience, and love. We're proud to be yours.</p>
-      <p class="finale-signoff">Happy Father's Day — to the moon and back. 🌙</p>
-      <button id="launchBtn" class="launch-btn">Launch a Shooting Star</button>
+      <div class="finale-heart">♥</div>
+      <h2 class="section-title">Happy Father's Day</h2>
+      <p class="finale-text">We love you, Dad — to the moon and back.</p>
+      <button id="launchBtn" class="launch-btn">Send Dad Some Love</button>
     </section>
   </main>
 
