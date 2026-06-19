@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Father's Day</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="sky"></canvas>
+
+  <header class="hero">
+    <div class="planet planet-saturn"></div>
+    <div class="planet planet-moon"></div>
+    <p class="eyebrow">From Mission Control, with love</p>
+    <h1 class="title">Happy Father's Day, <span id="dadName">Dad</span></h1>
+    <p class="subtitle">You're out of this world. Literally.</p>
+    <a class="scroll-cue" href="#letter">keep scrolling ↓</a>
+  </header>
+
+  <main>
+    <section id="letter" class="panel">
+      <h2>A Transmission For You</h2>
+      <p id="letterText" class="typewriter"></p>
+    </section>
+
+    <section id="constellation" class="panel">
+      <h2>The Memory Constellation</h2>
+      <p class="hint">Tap a star to reveal a memory.</p>
+      <div id="stars" class="star-field"></div>
+      <div id="memoryCard" class="memory-card hidden">
+        <p id="memoryText"></p>
+        <button id="closeMemory" aria-label="Close">×</button>
+      </div>
+    </section>
+
+    <section id="gallery" class="panel">
+      <h2>Mission Photos</h2>
+      <p class="hint">Drop photos into <code>www/photos/</code> and list them in <code>app.js</code> to fill this gallery.</p>
+      <div id="galleryGrid" class="gallery-grid"></div>
+    </section>
+
+    <section id="finale" class="panel finale">
+      <div class="rocket">🚀</div>
+      <h2>Thanks for being out of this world.</h2>
+      <p>Happy Father's Day. We love you to the moon and back.</p>
+      <button id="launchBtn" class="launch-btn">Launch a Shooting Star</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
