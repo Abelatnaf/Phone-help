@@ -3,133 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Father's Day, Dad</title>
-<meta name="description" content="A handwritten Father's Day keepsake.">
+<title>For Dad — a little film</title>
+<meta name="description" content="A cinematic Father's Day keepsake.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Caveat:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <!-- paper grain + vignette overlays -->
+<body class="locked">
+  <!-- overlays -->
+  <canvas id="particles" aria-hidden="true"></canvas>
   <div class="grain" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
-
-  <!-- scroll progress thread -->
   <div class="progress-thread" aria-hidden="true"><span id="progressFill"></span></div>
 
-  <!-- COVER -->
-  <header class="cover" id="cover">
-    <span class="ambient-heart h1">♥</span>
-    <span class="ambient-heart h2">♥</span>
-    <span class="ambient-heart h3">✦</span>
-    <span class="ambient-heart h4">♥</span>
+  <!-- sound (shown only if CONFIG.musicSrc is set) -->
+  <button class="sound-toggle" id="soundToggle" aria-label="Toggle music">♪</button>
 
-    <p class="cover-eyebrow reveal">a little something for</p>
-    <h1 class="cover-title reveal" style="--d:.08s">Dad</h1>
-
-    <button class="envelope reveal" id="envelope" style="--d:.16s" aria-label="Open your card">
-      <span class="env-airmail"></span>
-      <span class="env-shadow"></span>
-      <span class="env-back"></span>
-      <span class="env-card">
-        <span class="env-photo"><img src="photos/hero-tux.jpg" alt="Dad"></span>
-        <span class="env-card-text">Happy Father's Day ♥</span>
-      </span>
-      <span class="env-front"></span>
-      <span class="env-stamp">
-        <span class="env-stamp-inner">♥</span>
-      </span>
-      <span class="env-postmark">VENEZIA<br><b>★ PAR AVION ★</b><br>2026</span>
-      <span class="env-seal">♥</span>
-    </button>
-
-    <p class="cover-hint" id="coverHint">
-      <span>Tap to open</span>
-      <span class="hint-arrow">↓</span>
-    </p>
-  </header>
-
-  <main>
-    <!-- LETTER -->
-    <section id="letter" class="panel">
-      <div class="paper-panel reveal-scale">
-        <span class="paper-tape tape-letter"></span>
-        <p class="dear">Dear Dad,</p>
-        <p id="letterText" class="typewriter"></p>
-        <p class="sign-off">— with all our love,</p>
-        <p class="signature" id="signature">your kids</p>
-      </div>
-    </section>
-
-    <div class="divider" aria-hidden="true">
-      <svg viewBox="0 0 240 24" preserveAspectRatio="none"><path d="M2 14 C 40 2, 80 22, 120 12 S 200 2, 238 12" /></svg>
-      <span class="divider-heart">♥</span>
+  <!-- title card -->
+  <div class="title-card" id="titleCard">
+    <div class="tc-frame">
+      <p class="tc-kicker">a short film</p>
+      <h1 class="tc-title">For Dad</h1>
     </div>
+    <button class="tc-begin" id="beginBtn">press to begin</button>
+    <p class="tc-sub">turn your sound on ♪</p>
+  </div>
 
-    <!-- LESSONS -->
-    <section id="lessons" class="panel">
-      <h2 class="section-title reveal">What You Taught Us</h2>
-      <p class="hint reveal" style="--d:.06s">without ever sitting us down to say it</p>
-      <ul id="lessonsList" class="lessons-list"></ul>
-    </section>
+  <!-- film scenes render here -->
+  <main class="film" id="film"></main>
 
-    <div class="divider flip" aria-hidden="true">
-      <svg viewBox="0 0 240 24" preserveAspectRatio="none"><path d="M2 14 C 40 2, 80 22, 120 12 S 200 2, 238 12" /></svg>
-      <span class="divider-heart">✦</span>
-    </div>
-
-    <!-- MEMORIES -->
-    <section id="memories" class="panel">
-      <h2 class="section-title reveal">Our Favourite Moments</h2>
-      <p class="hint reveal" style="--d:.06s">a few of the thousand reasons we love you</p>
-      <div id="scrapGrid" class="scrap-grid"></div>
-    </section>
-
-    <!-- POSTCARDS (horizontal filmstrip) -->
-    <section id="postcards" class="postcards-section">
-      <h2 class="section-title reveal">Postcards From The Road</h2>
-      <p class="hint reveal" style="--d:.06s">drag to wander • tap to enlarge</p>
-      <div id="filmstrip" class="filmstrip">
-        <div id="filmTrack" class="film-track"></div>
-      </div>
-    </section>
-
-    <!-- PULL QUOTE -->
-    <section id="quote" class="quote-band">
-      <span class="quote-mark">“</span>
-      <p class="quote-text reveal-scale">Anywhere in the world, the best view was always the one with you in it.</p>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery" class="panel panel-wide">
-      <h2 class="section-title reveal">A Life Well Travelled</h2>
-      <p class="hint reveal" style="--d:.06s">every photo, a place we'd go again • tap to enlarge</p>
-      <div id="galleryGrid" class="gallery-grid"></div>
-    </section>
-
-    <!-- NOTES (only renders if CONFIG.notes has entries) -->
-    <section id="notes" class="panel hidden">
-      <h2 class="section-title reveal">From Everyone Who Loves You</h2>
-      <p class="hint reveal" style="--d:.06s">tap a note to read it</p>
-      <div id="notesList" class="notes-list"></div>
-    </section>
-
-    <!-- FINALE -->
-    <section id="finale" class="panel finale">
-      <div class="finale-photo reveal-scale">
-        <img src="photos/dad-sons-1.jpg" alt="Dad and sons">
-        <span class="paper-tape tape-finale"></span>
-      </div>
-      <div class="finale-heart">♥</div>
-      <h2 class="section-title reveal">Happy Father's Day</h2>
-      <p class="finale-text reveal" style="--d:.06s">We love you, Dad — to the moon and back.</p>
-      <button id="launchBtn" class="launch-btn">Send Dad Some Love</button>
-      <p class="finale-foot">made with ♥ • Father's Day 2026</p>
-    </section>
-  </main>
-
-  <!-- LIGHTBOX -->
+  <!-- lightbox -->
   <div id="lightbox" class="lightbox hidden">
     <button class="lb-close" aria-label="Close">×</button>
     <button class="lb-nav lb-prev" aria-label="Previous">‹</button>
