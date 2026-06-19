@@ -3,30 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Father's Day</title>
+<title>Happy Father's Day, Dad</title>
+<meta name="description" content="A Father's Day tribute — out of this world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <canvas id="sky"></canvas>
 
+  <!-- HERO -->
   <header class="hero">
-    <div class="planet planet-saturn"></div>
-    <div class="planet planet-moon"></div>
-    <p class="eyebrow">From Mission Control, with love</p>
-    <h1 class="title">Happy Father's Day, <span id="dadName">Dad</span></h1>
-    <p class="subtitle">You're out of this world. Literally.</p>
-    <a class="scroll-cue" href="#letter">keep scrolling ↓</a>
+    <div class="hero-portrait reveal">
+      <img src="photos/hero-tux.jpg" alt="Dad" loading="eager">
+      <div class="portrait-glow"></div>
+    </div>
+    <div class="hero-text">
+      <p class="eyebrow reveal">From Mission Control, with love</p>
+      <h1 class="title reveal">Happy Father's Day</h1>
+      <p class="subtitle reveal">To the man who is, quite simply, out of this world.</p>
+    </div>
+    <a class="scroll-cue" href="#letter" aria-label="Scroll down">↓</a>
   </header>
 
   <main>
+    <!-- LETTER -->
     <section id="letter" class="panel">
-      <h2>A Transmission For You</h2>
+      <h2 class="section-title">A Transmission For You</h2>
       <p id="letterText" class="typewriter"></p>
     </section>
 
+    <!-- CONSTELLATION -->
     <section id="constellation" class="panel">
-      <h2>The Memory Constellation</h2>
-      <p class="hint">Tap a star to reveal a memory.</p>
+      <h2 class="section-title">The Memory Constellation</h2>
+      <p class="hint">Tap a star to light up a memory.</p>
       <div id="stars" class="star-field"></div>
       <div id="memoryCard" class="memory-card hidden">
         <p id="memoryText"></p>
@@ -34,19 +45,36 @@
       </div>
     </section>
 
-    <section id="gallery" class="panel">
-      <h2>Mission Photos</h2>
-      <p class="hint">Drop photos into <code>www/photos/</code> and list them in <code>app.js</code> to fill this gallery.</p>
+    <!-- GALLERY -->
+    <section id="gallery" class="panel panel-wide">
+      <h2 class="section-title">A Life Well Travelled</h2>
+      <p class="hint">Every photo, a place we'd go again. Tap to enlarge.</p>
       <div id="galleryGrid" class="gallery-grid"></div>
     </section>
 
+    <!-- FINALE -->
     <section id="finale" class="panel finale">
-      <div class="rocket">🚀</div>
-      <h2>Thanks for being out of this world.</h2>
-      <p>Happy Father's Day. We love you to the moon and back.</p>
+      <div class="finale-photo reveal">
+        <img src="photos/dad-sons-1.jpg" alt="Dad and sons" loading="lazy">
+      </div>
+      <h2 class="section-title">Like Father, Like Sons</h2>
+      <p class="finale-text">Thank you for showing us the world, and how to move through it
+      with style, patience, and love. We're proud to be yours.</p>
+      <p class="finale-signoff">Happy Father's Day — to the moon and back. 🌙</p>
       <button id="launchBtn" class="launch-btn">Launch a Shooting Star</button>
     </section>
   </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox hidden">
+    <button class="lb-close" aria-label="Close">×</button>
+    <button class="lb-nav lb-prev" aria-label="Previous">‹</button>
+    <figure class="lb-figure">
+      <img id="lbImage" src="" alt="">
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" aria-label="Next">›</button>
+  </div>
 
   <script src="app.js"></script>
 </body>
