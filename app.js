@@ -2,23 +2,47 @@
 //  FOR DAD — a cinematic Father's Day film.
 //  Everything you might want to change lives in CONFIG below: the scene
 //  order, each photo, the words on screen, the letter, and the gallery.
-//  Captions are written in a single, personal voice ("from just me to you").
+//  Every line is written in plain, simple English with an Amharic (አማርኛ)
+//  translation, so the film can be read in either language — tap the
+//  language button at the top-left to switch.
 // =========================================================================
 const CONFIG = {
   // Optional background music. Drop an mp3 at this path (e.g. "audio/theme.mp3")
   // and the ♪ button appears automatically. Leave "" to hide it.
   musicSrc: "",
 
-  // The typed letter at the heart of the film.
-  letter: `From the canals of Venice to the dance floor back home, you made the
-whole world feel like somewhere we belonged. You showed me how to carry
-myself — sharp suit, easy smile, and a heart that always made room for
-one more.
+  // Small bits of interface text (title card + buttons), in both languages.
+  ui: {
+    filmKicker: { en: "a short film", am: "አጭር ፊልም" },
+    title:      { en: "For Dad", am: "ለአባቴ" },
+    begin:      { en: "press to begin", am: "ለመጀመር ይጫኑ" },
+    tcSubFilm:  { en: "a little film, just for you", am: "ትንሽ ፊልም፣ ላንተ ብቻ" },
+    tcSubSound: { en: "turn your sound on ♪", am: "ድምፅዎን ያብሩ ♪" },
+    scroll:     { en: "scroll", am: "አሸብልል" },
+    toAm: "አማርኛ",   // label shown when in English (tap → Amharic)
+    toEn: "English", // label shown when in Amharic (tap → English)
+  },
 
-Thank you for the trips, the long lunches, the laughter at 30,000 feet,
-and the quiet steadiness behind all of it.`,
-  signOff: "— with all my love,",
-  signature: "your kid",
+  // The typed letter at the heart of the film.
+  letter: {
+    dear: { en: "Dear Dad,", am: "ውድ አባዬ፣" },
+    body: {
+      en: `From Venice to the dance floor back home, you made everywhere feel
+like home. You showed me how to be a man — a sharp suit, a kind smile,
+and a big heart with room for everyone.
+
+Thank you for the trips, the long lunches, the laughs on the plane,
+and for always being there.`,
+      am: `ከቬኒስ እስከ ቤታችን የዳንስ መድረክ ድረስ፣ የትም ቦታ እንደ ቤት እንዲሰማን
+አደረግህ። ሰው መሆንን አሳየኸኝ — የተዋበ ልብስ፣ ደግ ፈገግታ፣ እና ለሁሉም
+ቦታ ያለው ትልቅ ልብ።
+
+ስለ ጉዞዎቹ፣ ስለ ረጅም ምሳዎቹ፣ በአውሮፕላን ላይ ስለ ሳቅነው፣
+እና ሁልጊዜ ከጎኔ ስለ ሆንክ አመሰግናለሁ።`,
+    },
+    signOff: { en: "— with all my love,", am: "— በፍቅር ሁሉ፣" },
+    signature: { en: "your kid", am: "ልጅህ" },
+  },
 
   // The film, scene by scene. Types:
   //   'hero'    — opening title over a photo
@@ -26,93 +50,118 @@ and the quiet steadiness behind all of it.`,
   //   'letter'  — the typed letter over a blurred photo
   //   'gallery' — the contact-sheet of every photo (uses `photos` below)
   //   'finale'  — the closing scene
+  // Every line is { en, am } so it can show in either language.
   scenes: [
     { type: "hero", photo: "photos/traditional-dance.jpg", focus: "center 38%",
-      eyebrow: "a little something for you",
-      line: "Happy\nFather's Day",
-      sub: "To the man who never stopped dancing." },
+      eyebrow: { en: "a little gift for you", am: "ትንሽ ስጦታ ላንተ" },
+      line: { en: "Happy\nFather's Day", am: "መልካም\nየአባቶች ቀን" },
+      sub: { en: "To the man who always loves to dance.", am: "ሁልጊዜ መደነስ ለሚወደው ሰው።" } },
 
     { type: "caption", photo: "photos/dad-grey-suit.jpg", focus: "center 32%",
-      line: "Before I knew\nanything at all,\nI knew you." },
+      line: { en: "Before I knew\nanything,\nI knew you.", am: "ምንም ከማወቄ\nበፊት፣\nአንተን አወቅሁ።" } },
 
     { type: "caption", photo: "photos/venice-church.jpg", focus: "center 62%",
-      chapter: "Chapter One — Away",
-      line: "We went looking\nfor the world," },
+      chapter: { en: "Part One — Away", am: "ክፍል አንድ — ሩቅ" },
+      line: { en: "We went to see\nthe world,", am: "ዓለምን ለማየት\nሄድን፣" } },
 
     { type: "caption", photo: "photos/venice-goldenhour.jpg", focus: "center 72%",
-      line: "and found it glowing\non the water." },
+      line: { en: "and we found it\non the water.", am: "በውሃው ላይም\nአገኘናት።" } },
 
     { type: "caption", photo: "photos/venice-point.jpg", focus: "center 55%",
-      kicker: "you always knew",
-      line: "which way the\nadventure was." },
+      kicker: { en: "you always knew", am: "ሁልጊዜ ታውቅ ነበር" },
+      line: { en: "which way to go.", am: "የትኛውን መንገድ\nእንደምንሄድ።" } },
 
     { type: "caption", photo: "photos/venice-dining.jpg", focus: "center 28%",
-      kicker: "la dolce vita",
-      line: "Long lunches.\nLonger stories." },
+      kicker: { en: "the good life", am: "መልካም ኑሮ" },
+      line: { en: "Long lunches.\nGood stories.", am: "ረጅም ምሳዎች።\nጥሩ ወጎች።" } },
 
     { type: "caption", photo: "photos/flight-laugh.jpg", focus: "center 55%",
-      chapter: "Chapter Two — The Sky",
-      line: "The best part was\nnever the destination." },
+      chapter: { en: "Part Two — The Sky", am: "ክፍል ሁለት — ሰማይ" },
+      line: { en: "Being together\nwas the best part.", am: "አብሮ መሆን\nከሁሉ የተሻለው ነበር።" } },
 
     { type: "caption", photo: "photos/flight-playful.jpg", focus: "center 35%",
-      line: "Thirty-thousand feet —\nstill the funniest\nperson I know." },
+      line: { en: "High in the sky —\nstill the funniest\nperson I know.", am: "ሰማይ ላይም —\nከማውቃቸው ሁሉ\nበጣም አስቂኙ አንተ ነህ።" } },
 
     { type: "letter", photo: "photos/dad-tux.jpg", focus: "center 35%" },
 
     { type: "caption", photo: "photos/dad-cream-suit.jpg", focus: "center 32%",
-      chapter: "Chapter Three — Home",
-      line: "Style, I learned,\nis just kindness —\nwell dressed." },
+      chapter: { en: "Part Three — Home", am: "ክፍል ሦስት — ቤት" },
+      line: { en: "You taught me\nthat being kind\nis the best style.", am: "ደግ መሆን\nከሁሉ የተሻለ ዘይቤ\nእንደሆነ አስተማርከኝ።" } },
 
     { type: "caption", photo: "photos/hero-tux.jpg", focus: "center 36%",
-      kicker: "and somehow,",
-      line: "you always knew\nhow to walk into a room." },
+      kicker: { en: "and somehow", am: "እንዴት እንደሆነ ባላውቅም" },
+      line: { en: "you always know\nhow to light up\na room.", am: "ሁልጊዜ ክፍልን\nማድመቅ\nታውቅበታለህ።" } },
 
     { type: "caption", photo: "photos/festival.jpg", focus: "center 32%",
-      line: "You taught me\nwhere I'm from." },
+      line: { en: "You taught me\nwhere I come from.", am: "ከየት እንደመጣሁ\nአስተማርከኝ።" } },
 
     { type: "caption", photo: "photos/dad-sons-1.jpg", focus: "center 40%",
-      chapter: "Chapter Four — Us",
-      line: "Everything I know\nabout being a good man,\nI learned watching you." },
+      chapter: { en: "Part Four — Us", am: "ክፍል አራት — እኛ" },
+      line: { en: "I learned how to be\na good man\nby watching you.", am: "ጥሩ ሰው መሆንን\nአንተን እያየሁ\nተማርኩ።" } },
 
     { type: "gallery",
-      title: "Every Frame",
-      sub: "a place I'd go again — tap to linger" },
+      title: { en: "Every Moment", am: "እያንዳንዱ ቅጽበት" },
+      sub: { en: "tap a photo to see it", am: "ፎቶ ለማየት ይንኩ" } },
 
     { type: "finale", photo: "photos/dad-sons-2.jpg", focus: "center 35%",
-      script: "to the moon and back",
-      line: "Happy Father's Day, Dad.",
-      sub: "I love you.",
-      button: "Send some love",
-      foot: "made with ♥ · Father's Day 2026" },
+      script: { en: "to the moon and back", am: "እስከ ጨረቃ ድረስ" },
+      line: { en: "Happy Father's Day, Dad.", am: "መልካም የአባቶች ቀን፣ አባዬ።" },
+      sub: { en: "I love you.", am: "እወድሃለሁ።" },
+      button: { en: "Send love", am: "ፍቅር ላክ" },
+      foot: { en: "made with ♥ · Father's Day 2026", am: "በ♥ የተሰራ · የአባቶች ቀን 2026" } },
   ],
 
-  // Contact-sheet gallery — every photo, captioned.
+  // Contact-sheet gallery — every photo, captioned in both languages.
   photos: [
-    { src: "photos/venice-church.jpg",     cap: "Grand Canal mornings" },
-    { src: "photos/dad-tux.jpg",           cap: "The burgundy tux" },
-    { src: "photos/flight-laugh.jpg",      cap: "Best seat in the house" },
-    { src: "photos/venice-goldenhour.jpg", cap: "Golden hour on the water" },
-    { src: "photos/dad-grey-suit.jpg",     cap: "Sharp as ever" },
-    { src: "photos/venice-point.jpg",      cap: "This way to the adventure" },
-    { src: "photos/airport-son.jpg",       cap: "Wheels up" },
-    { src: "photos/dad-sons-2.jpg",        cap: "Family" },
-    { src: "photos/venice-selfie.jpg",     cap: "Sunshine and the canal" },
-    { src: "photos/restaurant.jpg",        cap: "Family dinners" },
-    { src: "photos/traditional-dance.jpg", cap: "A night of tradition" },
-    { src: "photos/venice-bridge.jpg",     cap: "By the Scalzi bridge" },
-    { src: "photos/dad-cream-suit.jpg",    cap: "Effortless" },
-    { src: "photos/flight-playful.jpg",    cap: "Cheers, from the clouds" },
-    { src: "photos/festival.jpg",          cap: "Celebration in the streets" },
-    { src: "photos/venice-dining.jpg",     cap: "La dolce vita" },
-    { src: "photos/indoor-selfie.jpg",     cap: "Always together" },
-    { src: "photos/mall.jpg",              cap: "Partners in everything" },
-    { src: "photos/dad-sons-1.jpg",        cap: "Like father" },
-    { src: "photos/hero-tux.jpg",          cap: "The one and only" },
+    { src: "photos/venice-church.jpg",     cap: { en: "Grand Canal mornings", am: "የግራንድ ካናል ጠዋቶች" } },
+    { src: "photos/dad-tux.jpg",           cap: { en: "The burgundy tux", am: "ወይን ጠጅ ሱፉ" } },
+    { src: "photos/flight-laugh.jpg",      cap: { en: "Best seat in the house", am: "ምርጡ ወንበር" } },
+    { src: "photos/venice-goldenhour.jpg", cap: { en: "Golden hour on the water", am: "በውሃው ላይ የወርቅ ሰዓት" } },
+    { src: "photos/dad-grey-suit.jpg",     cap: { en: "Sharp as ever", am: "ሁሌም የተዋበ" } },
+    { src: "photos/venice-point.jpg",      cap: { en: "This way to the adventure", am: "ወደ ጀብዱው በዚህ በኩል" } },
+    { src: "photos/airport-son.jpg",       cap: { en: "Wheels up", am: "ጉዞ ጀመረ" } },
+    { src: "photos/dad-sons-2.jpg",        cap: { en: "Family", am: "ቤተሰብ" } },
+    { src: "photos/venice-selfie.jpg",     cap: { en: "Sunshine and the canal", am: "ፀሐይና ካናል" } },
+    { src: "photos/restaurant.jpg",        cap: { en: "Family dinners", am: "የቤተሰብ እራት" } },
+    { src: "photos/traditional-dance.jpg", cap: { en: "A night of tradition", am: "የባህል ምሽት" } },
+    { src: "photos/venice-bridge.jpg",     cap: { en: "By the Scalzi bridge", am: "በስካልዚ ድልድይ አጠገብ" } },
+    { src: "photos/dad-cream-suit.jpg",    cap: { en: "Effortless", am: "በቀላሉ ውብ" } },
+    { src: "photos/flight-playful.jpg",    cap: { en: "Cheers, from the clouds", am: "ከደመናዎች ሰላምታ" } },
+    { src: "photos/festival.jpg",          cap: { en: "Celebration in the streets", am: "በመንገድ ላይ በዓል" } },
+    { src: "photos/venice-dining.jpg",     cap: { en: "La dolce vita", am: "መልካም ኑሮ" } },
+    { src: "photos/indoor-selfie.jpg",     cap: { en: "Always together", am: "ሁልጊዜ አብረን" } },
+    { src: "photos/mall.jpg",              cap: { en: "Partners in everything", am: "በሁሉም ነገር አጋሮች" } },
+    { src: "photos/dad-sons-1.jpg",        cap: { en: "Like father", am: "እንደ አባት" } },
+    { src: "photos/hero-tux.jpg",          cap: { en: "The one and only", am: "ብቸኛው" } },
   ],
 };
 
 const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const film = document.getElementById("film");
+
+// ----------------------------------------------------------------------
+//  Language (English / Amharic)
+// ----------------------------------------------------------------------
+let LANG = "en";
+// Pick the current language out of an { en, am } object.
+function L(obj) { return obj ? (obj[LANG] ?? obj.en ?? "") : ""; }
+// Make a text element that remembers both languages so it can be swapped live.
+function makeText(tag, cls, obj) {
+  const el = document.createElement(tag);
+  if (cls) el.className = cls;
+  if (obj) {
+    el.dataset.en = obj.en ?? "";
+    el.dataset.am = obj.am ?? obj.en ?? "";
+    el.textContent = LANG === "am" ? el.dataset.am : el.dataset.en;
+  }
+  return el;
+}
+// Tag an existing element (e.g. the static title card) with both languages.
+function setI18n(el, obj) {
+  if (!el || !obj) return;
+  el.dataset.en = obj.en ?? "";
+  el.dataset.am = obj.am ?? obj.en ?? "";
+}
 
 // ----------------------------------------------------------------------
 //  Scene builders
@@ -155,14 +204,17 @@ function buildHero(s) {
   sec.append(bgFor(s.photo, s.focus), scrim());
   const c = document.createElement("div");
   c.className = "scene-content";
-  c.innerHTML =
-    (s.eyebrow ? `<p class="sc-eyebrow">${s.eyebrow}</p>` : "") +
-    `<h1 class="sc-line">${s.line}</h1>` +
-    (s.sub ? `<p class="sc-sub">${s.sub}</p>` : "");
+  if (s.eyebrow) c.appendChild(makeText("p", "sc-eyebrow", s.eyebrow));
+  c.appendChild(makeText("h1", "sc-line", s.line));
+  if (s.sub) c.appendChild(makeText("p", "sc-sub", s.sub));
   sec.appendChild(c);
   const cue = document.createElement("div");
   cue.className = "scroll-cue";
-  cue.innerHTML = `<span>scroll</span><span class="arrow">↓</span>`;
+  cue.appendChild(makeText("span", null, CONFIG.ui.scroll));
+  const arrow = document.createElement("span");
+  arrow.className = "arrow";
+  arrow.textContent = "↓";
+  cue.appendChild(arrow);
   sec.appendChild(cue);
   return sec;
 }
@@ -173,11 +225,10 @@ function buildCaption(s) {
   sec.append(bgFor(s.photo, s.focus), scrim());
   const c = document.createElement("div");
   c.className = "scene-content";
-  c.innerHTML =
-    (s.chapter ? `<span class="chapter-pill">${s.chapter}</span>` : "") +
-    (s.kicker ? `<p class="sc-kicker">${s.kicker}</p>` : "") +
-    `<p class="sc-line">${s.line}</p>` +
-    (s.sub ? `<p class="sc-sub">${s.sub}</p>` : "");
+  if (s.chapter) c.appendChild(makeText("span", "chapter-pill", s.chapter));
+  if (s.kicker) c.appendChild(makeText("p", "sc-kicker", s.kicker));
+  c.appendChild(makeText("p", "sc-line", s.line));
+  if (s.sub) c.appendChild(makeText("p", "sc-sub", s.sub));
   sec.appendChild(c);
   return sec;
 }
@@ -188,12 +239,18 @@ function buildLetter(s) {
   sec.append(bgFor(s.photo, s.focus), scrim());
   const paper = document.createElement("div");
   paper.className = "letter-paper scene-content";
-  paper.innerHTML = `
-    <span class="letter-tape"></span>
-    <p class="letter-dear">Dear Dad,</p>
-    <p class="letter-body" id="letterBody"></p>
-    <p class="letter-signoff">${CONFIG.signOff}</p>
-    <p class="letter-sign">${CONFIG.signature}</p>`;
+  const tape = document.createElement("span");
+  tape.className = "letter-tape";
+  const body = document.createElement("p");
+  body.className = "letter-body";
+  body.id = "letterBody";
+  paper.append(
+    tape,
+    makeText("p", "letter-dear", CONFIG.letter.dear),
+    body,
+    makeText("p", "letter-signoff", CONFIG.letter.signOff),
+    makeText("p", "letter-sign", CONFIG.letter.signature),
+  );
   sec.appendChild(paper);
   return sec;
 }
@@ -203,9 +260,8 @@ function buildGallery(s) {
   sec.className = "scene scene-gallery";
   const head = document.createElement("div");
   head.className = "gallery-head";
-  head.innerHTML =
-    `<h2 class="gallery-title">${s.title}</h2>` +
-    (s.sub ? `<p class="gallery-sub">${s.sub}</p>` : "");
+  head.appendChild(makeText("h2", "gallery-title", s.title));
+  if (s.sub) head.appendChild(makeText("p", "gallery-sub", s.sub));
   const grid = document.createElement("div");
   grid.className = "gallery-grid";
   grid.id = "galleryGrid";
@@ -219,13 +275,19 @@ function buildFinale(s) {
   sec.append(bgFor(s.photo, s.focus), scrim());
   const c = document.createElement("div");
   c.className = "scene-content";
-  c.innerHTML =
-    `<div class="finale-heart">♥</div>` +
-    `<h2 class="sc-line">${s.line}</h2>` +
-    (s.script ? `<p class="finale-script">${s.script}</p>` : "") +
-    (s.sub ? `<p class="sc-sub">${s.sub}</p>` : "") +
-    `<div><button id="launchBtn" class="launch-btn">${s.button}</button></div>` +
-    `<p class="finale-foot">${s.foot}</p>`;
+  const heart = document.createElement("div");
+  heart.className = "finale-heart";
+  heart.textContent = "♥";
+  c.appendChild(heart);
+  c.appendChild(makeText("h2", "sc-line", s.line));
+  if (s.script) c.appendChild(makeText("p", "finale-script", s.script));
+  if (s.sub) c.appendChild(makeText("p", "sc-sub", s.sub));
+  const btnWrap = document.createElement("div");
+  const btn = makeText("button", "launch-btn", s.button);
+  btn.id = "launchBtn";
+  btnWrap.appendChild(btn);
+  c.appendChild(btnWrap);
+  c.appendChild(makeText("p", "finale-foot", s.foot));
   sec.appendChild(c);
   return sec;
 }
@@ -295,19 +357,52 @@ sceneEls.forEach((el) => sceneObserver.observe(el));
 //  Typewriter letter
 // ----------------------------------------------------------------------
 let typed = false;
+let letterTimer = null;
 function typeLetter() {
   if (typed) return;
   const body = document.getElementById("letterBody");
   if (!body) return;
   typed = true;
-  if (REDUCED_MOTION) { body.textContent = CONFIG.letter; body.classList.add("done"); return; }
-  const text = CONFIG.letter;
+  const text = L(CONFIG.letter.body);
+  if (REDUCED_MOTION) { body.textContent = text; body.classList.add("done"); return; }
   let i = 0;
-  const timer = setInterval(() => {
+  letterTimer = setInterval(() => {
     body.textContent = text.slice(0, i++);
-    if (i > text.length) { clearInterval(timer); body.classList.add("done"); }
+    if (i > text.length) { clearInterval(letterTimer); letterTimer = null; body.classList.add("done"); }
   }, 18);
 }
+
+// ----------------------------------------------------------------------
+//  Language switch
+// ----------------------------------------------------------------------
+const langToggle = document.getElementById("langToggle");
+function applyLang(lang) {
+  LANG = lang === "am" ? "am" : "en";
+  document.documentElement.lang = LANG;
+  document.body.classList.toggle("am", LANG === "am");
+  // Swap every bilingual text element.
+  document.querySelectorAll("[data-en]").forEach((el) => {
+    el.textContent = LANG === "am" ? el.dataset.am : el.dataset.en;
+  });
+  // The letter types itself, so it has no data-en — handle it directly.
+  const body = document.getElementById("letterBody");
+  if (body && typed) {
+    if (letterTimer) { clearInterval(letterTimer); letterTimer = null; }
+    body.textContent = L(CONFIG.letter.body);
+    body.classList.add("done");
+  }
+  // Keep an open lightbox caption in sync.
+  if (lbCaption && lightbox && !lightbox.classList.contains("hidden")) {
+    lbCaption.textContent = L(CONFIG.photos[current].cap);
+  }
+  // The button shows the language you'd switch TO.
+  if (langToggle) langToggle.textContent = LANG === "am" ? CONFIG.ui.toEn : CONFIG.ui.toAm;
+}
+// Seed the static title card from CONFIG, then sync everything.
+setI18n(document.querySelector(".tc-kicker"), CONFIG.ui.filmKicker);
+setI18n(document.querySelector(".tc-title"), CONFIG.ui.title);
+setI18n(document.getElementById("beginBtn"), CONFIG.ui.begin);
+if (langToggle) langToggle.addEventListener("click", () => applyLang(LANG === "am" ? "en" : "am"));
 
 // ----------------------------------------------------------------------
 //  Gallery + lightbox
@@ -342,11 +437,9 @@ if (grid) {
     const frame = document.createElement("div");
     frame.className = "g-frame";
     const img = document.createElement("img");
-    img.src = photo.src; img.alt = photo.cap; img.loading = "lazy";
+    img.src = photo.src; img.alt = L(photo.cap); img.loading = "lazy";
     frame.appendChild(img);
-    const cap = document.createElement("div");
-    cap.className = "g-cap";
-    cap.textContent = photo.cap;
+    const cap = makeText("div", "g-cap", photo.cap);
     item.append(frame, cap);
     item.addEventListener("click", () => openLightbox(i));
     grid.appendChild(item);
@@ -357,7 +450,7 @@ if (grid) {
 function openLightbox(i) {
   current = (i + CONFIG.photos.length) % CONFIG.photos.length;
   const p = CONFIG.photos[current];
-  lbImage.src = p.src; lbImage.alt = p.cap; lbCaption.textContent = p.cap;
+  lbImage.src = p.src; lbImage.alt = L(p.cap); lbCaption.textContent = L(p.cap);
   lightbox.classList.remove("hidden");
 }
 function closeLightbox() { lightbox.classList.add("hidden"); }
@@ -487,8 +580,9 @@ function fadeAudio(target) {
 const titleCard = document.getElementById("titleCard");
 const beginBtn = document.getElementById("beginBtn");
 // keep the title-card line honest about whether there's sound
-const tcSub = titleCard.querySelector(".tc-sub");
-if (tcSub) tcSub.textContent = CONFIG.musicSrc ? "turn your sound on ♪" : "a little film, just for you";
+setI18n(titleCard.querySelector(".tc-sub"), CONFIG.musicSrc ? CONFIG.ui.tcSubSound : CONFIG.ui.tcSubFilm);
+// sync all interface + scene text to the starting language
+applyLang(LANG);
 function begin() {
   titleCard.classList.add("gone");
   document.body.classList.remove("locked");
